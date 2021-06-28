@@ -1,13 +1,13 @@
-<div class="row">
+<div class="row mt-5 mb-5">
   <div class="col-md-8">
     <h1 class="title is-1"><%= @trade.title %></h1>
     <div class="content">
-      <p class="pb3 border-bottom">Post <%= time_ago_in_words(@trade.created_at) %> ago</p>
-      <div class="pt1"><%= (@trade.description) %></div>
+      <p class="pb3 border-bottom mb-4">Post <%= time_ago_in_words(@trade.created_at) %> ago</p>
+      <div class="pt1 mb-5"><%= (@trade.description) %></div>
     </div>
 
     <% if @trade.images.attached? %>
-      <div class="columns is-multiline">
+      <div class="row">
         <% @trade.images.each do |image| %>
           <div class="col-md-4">
             <%= image_tag image.variant(resize: "800x600>") %>
