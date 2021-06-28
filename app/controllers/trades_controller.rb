@@ -22,19 +22,18 @@ class TradesController < ApplicationController
 
   # POST /trades or /trades.json
   def create
-    @trade = current_user.trades(trade_params)
+    @trade = current_user.trades.build(trade_params)
 
     respond_to do |format|
       if @trade.save
-        format.html { redirect_to @trade, notice: "Trade was successfully created." }
+        format.html { redirect_to @trade, notice: 'Trade was successfully created.' }
         format.json { render :show, status: :created, location: @trade }
       else
-        format.html { render :new, status: :unprocessable_entity }
+        format.html { render :new }
         format.json { render json: @trade.errors, status: :unprocessable_entity }
       end
     end
   end
-
   # PATCH/PUT /trades/1 or /trades/1.json
   def update
     respond_to do |format|

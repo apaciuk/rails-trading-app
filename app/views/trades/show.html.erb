@@ -3,7 +3,7 @@
     <h1 class="title is-1"><%= @trade.title %></h1>
     <div class="content">
       <p class="pb3 border-bottom">Post <%= time_ago_in_words(@trade.created_at) %> ago</p>
-      <div class="pt1"><%= sanitize markdown_to_html(@trade.description) %></div>
+      <div class="pt1"><%= (@trade.description) %></div>
     </div>
 
     <% if @trade.images.attached? %>

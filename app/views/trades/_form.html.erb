@@ -12,25 +12,26 @@
       </div>
     <% end %>
 
-   <div class="field">
-      <div class="control">
-        <%= f.input :title, required: true, autofocus: true, input_html: { class: "input"}, wrapper: false, label_html: { class: "label" } %>
-      </div>
-    </div>
+       <div class="mb-3">
+    <%= f.label :title, class: 'form-label' %>
+    <%= f.text_area :title, class: 'form-control' %>
 
-    <div class="field">
-      <div class="control">
-        <%= f.input :description, required: true, autofocus: true, input_html: { class: "textarea" }, wrapper: false, label_html: { class: "label" } %>
-      </div>
-    </div>
+  </div>
+         <div class="mb-3">
+    <%= f.label :description, class: 'form-label' %>
+    <%= f.text_area :description, class: 'form-control' %>
+  </div>
+  
+     
 
-    <div class="field">
-      <div class="control">
+
+  
+      <div class="form-group">
         <%= f.input :images, as: :file,  input_html: { multiple: true, direct_upload: true }, label: false, wrapper: false %>
       </div>
-    </div>
 
 
-  <%= f.button :submit, class: 'btn btn-dark' %>
+
+  <%= f.button :submit, class: 'btn btn-primary mt-4 mb-3' %>
 <% end %>
 
