@@ -2,7 +2,7 @@
   <div class="col-md-8">
     <h1 class="title is-1"><%= @trade.title %></h1>
     <div class="content">
-      <p class="pb3 border-bottom mb-4">Post <%= time_ago_in_words(@trade.created_at) %> ago</p>
+      <p class="pb-3 border-bottom mb-4">Post <%= time_ago_in_words(@trade.created_at) %> ago</p>
       <div class="pt1 mb-5"><%= (@trade.description) %></div>
     </div>
 
@@ -22,8 +22,8 @@
       <div class="bg-light pa3 mb4 border-radius-3">
         <p class="f6 pb1">Author actions:</p>
         <div class="button-group">
-          <%= link_to "Edit trade: #{@trade.title}", edit_trade_path(@trade), class: 'button is-small' %>
-          <%= link_to "Back", trades_path, class: "button is-small" %>
+          <%= link_to "Edit trade: #{@trade.title}", edit_trade_path(@trade), class: 'btn btn-secondary btn-sm' %>
+          <%= link_to "Back", trades_path, class: "btn btn-secondary btn-sm" %>
         </div>
       </div>
     <% end %>
