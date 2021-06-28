@@ -1,0 +1,45 @@
+<div class="row mt-4 mb-4">
+  <div class="col-sm-6">
+    <h1>Trades</h1>
+    <p>Trade your unwanted stuff online, Turn your old stuff in to huge amounts of Wonga</p>
+  </div>
+
+  <div class="col-sm-6 text-right">
+  <% @trades.each do |trade|%>
+  <% render trade, trade: trade %>
+  <% end %>
+  </div>
+</div>
+
+<div class="table-responsive">
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr>
+    
+
+            <th>Title</th>
+            <th>Description</th>
+            <th>User</th>
+            
+          <th></th>
+        
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @trades.each do |trade| %>
+        <%= content_tag :tr, id: dom_id(trade), class: dom_class(trade) do %>
+          
+
+                      <td><%= trade.title %></td>
+                      <td><%= trade.description %></td>
+                      <td><%= trade.user %></td>
+          
+          
+            <td><%= link_to 'Show', trade %></td>
+          
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+</div>
