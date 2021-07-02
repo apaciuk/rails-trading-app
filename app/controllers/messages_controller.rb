@@ -23,10 +23,18 @@ class MessagessController < ApplicationController
         redirect_to converstion_messages_path(@conversation)
   end
 
+  def new
+     @message = @conversation.messages.new
+  end
+
   private
 
   def find_conversation
      @converstion = Converstion.find(params[:conversation_id])
+  end
+
+  def message_params
+     params.require(:message).permit(:body, :user_id)
   end
 
 end
