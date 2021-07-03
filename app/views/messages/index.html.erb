@@ -1,0 +1,37 @@
+<div class="row mt-5 mb-5">
+<h1>Message <%= @conversation.recipient.name %></h1>
+<% if @over_ten %>
+  <%= link_to "Show previous", '?m=all', class:'button is-link' %>
+<% end %>
+
+<section id="messages" class="container">
+  <% @messages.each do |message| %>
+    <% if message.body %>
+      <% user = User.find(message.user_id) %>
+      <article>
+        <div class="message">
+          <div class="inline-block nudge-down-10 pr2"><%= gravatar_for user, size: 32 %></div>
+          <div class="inline-block"><strong><%= user.name %></strong> <%= message.message_time %></div>
+          <div class="block pt-4">
+            <div class="mt-4 mb-4"><%= sanitize(message.body) %></div>
+          </div>
+        </div>
+      </article>
+    <% end %>
+  <% end %>
+</section>
+
+<%= form_for [@conversation, @message] do |f| %>
+   <div class="mb-3">
+    <%= f.label :message, class: 'form-label' %>
+    <%= f.text_area :body, class: 'form-control', placeholder: "Inquire about a trade..." %>
+    <%= f.text_field :user_id, value: current_user.id, type: "hidden"  %>
+
+  </div>
+ <div>
+    <%= f.submit "Send message", class: "btn btn-primary mt-3" %>
+  </div>
+<% end %>
+</div>
+
+
