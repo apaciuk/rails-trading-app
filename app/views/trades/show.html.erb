@@ -3,13 +3,13 @@
     <h1 class="title is-1"><%= @trade.title %></h1>
     <div class="content">
       <p class="pb-3 border-bottom mb-4">Post <%= time_ago_in_words(@trade.created_at) %> ago</p>
-      <div class="pt1 mb-5"><%= (@trade.description) %></div>
+      <div class="pt-1 mb-5"><%= (@trade.description) %></div>
     </div>
 
     <% if @trade.images.attached? %>
       <div class="row">
         <% @trade.images.each do |image| %>
-          <div class="col-md-4">
+          <div class="col-md-4 mt-5">
             <%= image_tag image.variant(resize: "800x600>") %>
           </div>
         <% end %>
@@ -19,15 +19,15 @@
 
   <div class="col-md-4 is-offset-1">
     <% if trade_author(@trade) %>
-      <div class="bg-light pa3 mb4 border-radius-3">
-        <p class="f6 pb1">Author actions:</p>
+      <div class="mb-1">
+        <p>Author actions:</p>
         <div class="button-group">
-          <%= link_to "Edit trade: #{@trade.title}", edit_trade_path(@trade), class: 'btn btn-secondary btn-sm' %>
+          <%= link_to "Edit trade: #{@trade.title}", edit_trade_path(@trade), class: 'btn btn-success btn-sm' %>
           <%= link_to "Back", trades_path, class: "btn btn-secondary btn-sm" %>
         </div>
       </div>
     <% end %>
-    <div class="pr5 mb4">
+    <div>
       <p class="text-align-left f6">Trade author:</p>
       <div class="inline-block nudge-down-10"><%= gravatar_for @trade.user, size: 32 %></div>
       <div class="inline-block"><%= @trade.user.name %></div>
@@ -35,7 +35,7 @@
     <% if user_signed_in? && current_user.id != @trade.user_id %>
       <%= link_to "Message #{@trade.user.name}", conversations_path(sender_id: current_user.id, recipient_id: @trade.user.id), method: 'post', class:"button is-link" %>
     <% elsif user_signed_in? && current_user.id == @trade.user_id  %>
-      <%= link_to "Conversations", conversations_path %>
+      <%= link_to "Conversations", conversations_path, class: "btn btn-primary btn-sm mt-2" %>
     <% else %>
     <%= link_to "Sign up to message #{@trade.user.name}", new_user_registration_path %>
     <% end %>
